@@ -1,0 +1,31 @@
+export const siteData = {
+  title:
+    "AI Background Remover & Passport Size Photo Maker | Rubber Duck Solutions",
+  creator: "@algibyte",
+  description:
+    "Remove image backgrounds instantly and create passport size or stamp size photos online. Drag and drop your picture, erase background, choose photo size, and generate clean passport photos in seconds.",
+  keywords: [
+    "background remover",
+    "ai background remover",
+    "remove background from image",
+    "remove background from photo",
+    "passport size photo maker",
+    "passport photo maker",
+    "passport photo editor",
+    "passport size image online",
+    "stamp size photo maker",
+    "id photo maker",
+    "visa photo maker",
+    "drag and drop photo editor",
+    "online photo background remover",
+    "transparent background maker",
+    "passport photo with white background",
+    "rubber duck solutions",
+    "photo resize for passport",
+    "passport photo generator",
+    "instant passport photo",
+    "make passport photo online",
+  ],
+  image: "/images/seo.png",
+  url: "http://rubber-duck.solutions/",
+};

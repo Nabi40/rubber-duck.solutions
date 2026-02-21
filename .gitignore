@@ -1,0 +1,36 @@
+# add ignore rules
+cat >> .gitignore << 'EOF'
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# Virtualenvs
+venv/
+.env/
+web_env/
+backend/web_env/
+.env.local
+
+# Django
+*.log
+db.sqlite3
+media/
+staticfiles/
+
+# Node
+node_modules/
+.next/
+EOF
+
+
+backend/web_env/
+**/web_env/
+venv/
+.venv/
+__pycache__/
+*.pyc

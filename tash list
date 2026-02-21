@@ -1,0 +1,29 @@
+* [33m8506efe[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mv-1.0[m[33m)[m Update .gitignore (ignore venv, cache files)
+[31m|[m * [33m30840ba[m[33m ([m[1;32mnikunja[m[33m)[m Update .gitignore (ignore venv, cache files)
+[31m|[m * [33mb15330e[m Ignore venv and cache files
+[31m|[m *   [33m354dd79[m Merge branch 'v-1.0' of https://github.com/Nabi40/backRimg into nikunja
+[31m|[m [33m|[m[31m\[m  
+[31m|[m [33m|[m[31m/[m  
+[31m|[m[31m/[m[33m|[m   
+* [33m|[m [33m5952890[m[33m ([m[1;31morigin/v-1.0[m[33m)[m google analytics
+* [33m|[m [33md3030b1[m frontend
+* [33m|[m [33mfefcfd1[m added the google analytics and changed the color pallet and also added next and back button
+* [33m|[m [33m62807ec[m fixed frontend with states and fetch api
+* [33m|[m [33m07fa95d[m made the backedn for passport/stamp
+[34m|[m * [33ma33da83[m[33m ([m[1;31morigin/nikunja[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m update of last machine
+[34m|[m[34m/[m  
+* [33m3a3eedf[m[33m ([m[1;31morigin/dev[m[33m)[m added restart: always in backend in docker-compose
+* [33m9696e55[m 100% working fine
+* [33m95fe534[m changes dockerfile and next.config.mjs
+* [33mefab318[m changed the settings.py and api in hero.js
+* [33m54f65f2[m changed frontend dockerfile
+* [33m982d3cf[m added the docker-compose file
+* [33m5ee9334[m added the docker-compose file
+* [33md914210[m changed colors in frontend
+* [33m3cc8cf0[m added allow host
+* [33m78808d2[m added static root
+* [33mcbf9fad[m removed the req.txt file
+* [33md4e0ed0[m added a req.txt file in root
+* [33m4bdd5e9[m 2nd fixt render.yml
+* [33m74e7fc7[m fixt render.yml
+* [33m216ebc5[m first commit
