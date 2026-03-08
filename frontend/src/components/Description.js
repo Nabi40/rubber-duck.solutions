@@ -78,11 +78,29 @@ export default function Description() {
             </p>
           </div>
 
-          <div className="overflow-hidden rounded-[22px]">
-            <div className="grid grid-cols-3">
-              <img src="/images/des1.jpeg" alt="Original portrait" className="h-[250px] w-full object-cover" />
-              <img src="/images/bg1.png" alt="Background changed portrait" className="h-[250px] w-full object-cover" />
-              <img src="/images/des2.jpg" alt="Final edited image" className="h-[250px] w-full object-cover" />
+          <div className="overflow-hidden rounded-[22px] w-full">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-2">
+              <div className="flex items-center justify-center bg-[#f3f4f6]">
+                <img
+                  src="/images/bg-image400.png"
+                  alt="Original portrait"
+                  className="h-auto w-full max-h-[260px] object-contain"
+                />
+              </div>
+              <div className="flex items-center justify-center bg-[#f3f4f6]">
+                <img
+                  src="/images/bg-image10.png"
+                  alt="Background changed portrait"
+                  className="h-auto w-full max-h-[260px] object-contain"
+                />
+              </div>
+              <div className="flex items-center justify-center bg-[#f3f4f6]">
+                <img
+                  src="/images/bg-image40.png"
+                  alt="Final edited image"
+                  className="h-auto w-full max-h-[260px] object-contain"
+                />
+              </div>
             </div>
           </div>
         </div>
