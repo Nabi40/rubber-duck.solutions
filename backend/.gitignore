@@ -1,3 +1,4 @@
 # Python virtual environment
 web_env/
-.env/
+.env
+__pycache__/
