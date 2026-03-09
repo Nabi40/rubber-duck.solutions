@@ -31,7 +31,28 @@ def env_list(key: str, default=None, sep=","):
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "django-insecure-change-me")
 DEBUG = env_bool("DJANGO_DEBUG", False)
 
-ALLOWED_HOSTS = env_list("DJANGO_ALLOWED_HOSTS", ["localhost", "127.0.0.1"])
+ALLOWED_HOSTS = env_list(
+    "DJANGO_ALLOWED_HOSTS",
+    [
+        "localhost",
+        "127.0.0.1",
+        "backend",
+        "backend.rubber-duck.solutions",
+        "rubber-duck.solutions",
+        "www.rubber-duck.solutions",
+    ],
+)
+
+
+
+CSRF_TRUSTED_ORIGINS = env_list(
+    "CSRF_TRUSTED_ORIGINS",
+    [
+        "https://backend.rubber-duck.solutions",
+        "https://rubber-duck.solutions",
+        "https://www.rubber-duck.solutions",
+    ],
+)
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -149,14 +170,19 @@ CORS_ALLOWED_ORIGINS = env_list(
 # Security / Proxy / HTTPS
 # -------------------------
 # Only turn these on in production (DEBUG=False)
+USE_X_FORWARDED_HOST = True
+    # Trust proxy header (Nginx/Cloudflare)
+if env_bool("SECURE_PROXY_SSL_HEADER", True):
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+    
 if not DEBUG:
     # Cookies over HTTPS only
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
+    
 
-    # Trust proxy header (Nginx/Cloudflare)
-    if env_bool("SECURE_PROXY_SSL_HEADER", True):
-        SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
 
     # Good baseline hardening
     SECURE_HSTS_SECONDS = int(os.getenv("SECURE_HSTS_SECONDS", "3600"))  # 1 hour (increase later)
