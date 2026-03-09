@@ -332,7 +332,9 @@ export default function Hero() {
       const apiBase =
         process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_API || "";
       // Passport/stamp always go through our API proxy so the backend URL is never exposed
-      let endpoint = apiBase ? `${apiBase.replace(/\/$/, "")}/api/passport-stamp` : "/api/passport-stamp";
+      let endpoint = apiBase
+        ? `${apiBase.replace(/\/$/, "")}/api/passport-stamp/`
+        : "/api/passport-stamp/";
       const form = new FormData();
 
       if (isPassportTab || isStampTab) {
@@ -342,10 +344,6 @@ export default function Hero() {
         }
         // Use removed_bg_result id from /api/remove-bg/ response
         const rows = Math.ceil(selectedCount / pageCols);
-
-        endpoint = apiBase
-          ? `${apiBase.replace(/\/$/, "")}/api/passport-stamp/`
-          : "/api/passport-stamp/";
 
         const body = JSON.stringify({
           image: removedBgId,
@@ -395,54 +393,62 @@ export default function Hero() {
         return;
       }
 
-      {
-        form.append("image", origFile, origFile.name || "your_photo.jpg");
-        form.append("mode", activeTab);
-        form.append("color", normalizedBgColor);
-        form.append("size_option", sizeOption);
-      }
-
-      const res = await fetch(endpoint, {
-        method: "POST",
-        body: form,
-      });
-
-      if (!res.ok) {
-        const text = await res.text();
-        let message = "Request failed";
-        try {
-          const errData = JSON.parse(text);
-          message = errData?.error || errData?.detail || message;
-        } catch {
-          message = text || message;
+      // Background tab: use the removed background image ID and color only.
+      // This calls the passport-stamp API in its "bg_only" mode, which expects JSON:
+      // { image: <removed_bg_result id>, bg_color: <hex> }
+      if (activeTab === "Background") {
+        if (removedBgId == null) {
+          setError("Please wait for background removal to complete.");
+          return;
         }
-        throw new Error(message);
-      }
 
-      const contentType = res.headers.get("content-type") || "";
-      if (contentType.includes("application/json")) {
+        const body = JSON.stringify({
+          image: removedBgId,
+          bg_color: normalizedBgColor,
+        });
+
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body,
+        });
+
+        if (!res.ok) {
+          const text = await res.text();
+          let message = "Request failed";
+          try {
+            const errData = JSON.parse(text);
+            message = errData?.error || errData?.detail || message;
+          } catch {
+            message = text || message;
+          }
+          throw new Error(message);
+        }
+
         const data = await res.json();
-        const sheetUrl = data?.sheet_url;
-        if (!sheetUrl) throw new Error("sheet_url missing in response");
+        const imageUrl = data?.image_url ?? data?.url;
+        if (!imageUrl) throw new Error("image_url missing in response");
 
-        const absoluteSheetUrl = /^https?:\/\//i.test(sheetUrl)
-          ? sheetUrl
-          : `${apiBase.replace(/\/$/, "")}/${sheetUrl.replace(/^\//, "")}`;
+        const absoluteImageUrl = /^https?:\/\//i.test(imageUrl)
+          ? imageUrl
+          : `${(apiBase || "").replace(/\/$/, "")}${
+              imageUrl.startsWith("/") ? "" : "/"
+            }${imageUrl}`;
 
         try {
-          const fileRes = await fetch(absoluteSheetUrl);
+          const fileRes = await fetch(absoluteImageUrl);
           if (!fileRes.ok) throw new Error("File download failed");
 
           const blob = await fileRes.blob();
-          const fileName = absoluteSheetUrl.split("/").pop() || "output.png";
+          const fileName = absoluteImageUrl.split("/").pop() || "output.png";
           triggerBlobDownload(blob, fileName);
         } catch {
-          window.location.assign(absoluteSheetUrl);
+          window.location.assign(absoluteImageUrl);
         }
-      } else {
-        const blob = await res.blob();
-        triggerBlobDownload(blob, "output.png");
+        return;
       }
+
+      // (No current other modes)
     } catch (e) {
       console.error(e);
       setError("Processing failed. Please try again.");
@@ -730,15 +736,15 @@ export default function Hero() {
                     </div>
 
                     <div className="rounded-md border border-[#d2d2d2] bg-[#ececec] p-2">
-                      <div className="mx-auto aspect-[210/297] w-full max-w-[320px] bg-white p-3 shadow-[0_6px_20px_rgba(0,0,0,0.12)]">
+                      <div className="mx-auto inline-flex items-end aspect-[210/297] w-full max-w-[320px] bg-white p-3 shadow-[0_6px_20px_rgba(0,0,0,0.12)]">
                         <div
-                          className="grid h-full gap-2"
+                          className="grid items-end gap-2"
                           style={{ gridTemplateColumns: `repeat(${pageCols}, minmax(0, 1fr))` }}
                         >
                           {a4FillMap.map((isFilled, idx) => (
                             <div
                               key={idx}
-                              className="overflow-hidden"
+                              className="overflow-hidden h-full max-h-20 w-full max-w-17"
                               style={{
                                 backgroundColor: isFilled
                                   ? bgColor === "transparent"
@@ -749,7 +755,7 @@ export default function Hero() {
                             >
                               {isFilled && (
                                 <div
-                                  className="mx-auto h-full max-h-full w-full max-w-full"
+                                  className="mx-auto h-full max-h-20 w-full max-w-17"
                                   style={{ aspectRatio: photoAspectRatio }}
                                 >
                                   <img

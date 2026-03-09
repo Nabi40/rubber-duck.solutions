@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  trailingSlash: true,
   experimental: {
     disableOptimizedLoading: true,
+    serverActions: {
+      bodySizeLimit: "20mb",
+    },
   },
   reactStrictMode: true,
   turbopack: {},
