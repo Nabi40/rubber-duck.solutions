@@ -1,11 +1,33 @@
 // Server-only: never exposed to the client
 const getBackendBase = () =>
-  process.env.BACKEND_URL?.replace(/\/$/, "") || "http://localhost:8000";
+  process.env.BACKEND_URL?.replace(/\/$/, "") || "https://backend.rubber-duck.solutions";
+
+const getPublicBase = () =>
+  (process.env.NEXT_PUBLIC_BASE_URL ||
+    process.env.NEXT_PUBLIC_API ||
+    process.env.BACKEND_URL ||
+    "https://backend.rubber-duck.solutions").replace(/\/$/, "");
+
+const toPublicMediaUrl = (rawUrl) => {
+  if (!rawUrl || typeof rawUrl !== "string") return rawUrl;
+  try {
+    const parsed = new URL(rawUrl);
+    const marker = "/media/";
+    const idx = parsed.pathname.indexOf(marker);
+    if (idx === -1) return rawUrl;
+    const mediaPath = parsed.pathname.slice(idx + marker.length);
+    if (!mediaPath) return rawUrl;
+    const publicBase = getPublicBase();
+    const suffix = `${mediaPath}${parsed.search || ""}`;
+    return `${publicBase}/api/media/${suffix}`;
+  } catch {
+    return rawUrl;
+  }
+};
 
 export async function POST(request) {
   const backendBase = getBackendBase();
   const backendUrl = `${backendBase}/api/passport-stamp/`;
-  const requestOrigin = new URL(request.url).origin;
 
   try {
     const contentType = request.headers.get("content-type") || "";
@@ -41,13 +63,7 @@ export async function POST(request) {
           headers: { "content-type": resContentType },
         });
       }
-      if (data.sheet_url && typeof data.sheet_url === "string") {
-        const mediaBase = `${backendBase}/media/`;
-        if (data.sheet_url.startsWith(mediaBase)) {
-          const path = data.sheet_url.slice(mediaBase.length);
-          data.sheet_url = `${requestOrigin}/api/media/${path}`;
-        }
-      }
+      data.sheet_url = toPublicMediaUrl(data.sheet_url);
       return new Response(JSON.stringify(data), {
         status: res.status,
         headers: { "content-type": "application/json" },

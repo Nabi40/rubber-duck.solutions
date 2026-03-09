@@ -1,11 +1,33 @@
 // Server-only: proxy to Django remove-bg API
 const getBackendBase = () =>
-  process.env.BACKEND_URL?.replace(/\/$/, "") || "http://localhost:8000";
+  process.env.BACKEND_URL?.replace(/\/$/, "") || "https://backend.rubber-duck.solutions";
+
+const getPublicBase = () =>
+  (process.env.NEXT_PUBLIC_BASE_URL ||
+    process.env.NEXT_PUBLIC_API ||
+    process.env.BACKEND_URL ||
+    "https://backend.rubber-duck.solutions").replace(/\/$/, "");
+
+const toPublicMediaUrl = (rawUrl) => {
+  if (!rawUrl || typeof rawUrl !== "string") return rawUrl;
+  try {
+    const parsed = new URL(rawUrl);
+    const marker = "/media/";
+    const idx = parsed.pathname.indexOf(marker);
+    if (idx === -1) return rawUrl;
+    const mediaPath = parsed.pathname.slice(idx + marker.length);
+    if (!mediaPath) return rawUrl;
+    const publicBase = getPublicBase();
+    const suffix = `${mediaPath}${parsed.search || ""}`;
+    return `${publicBase}/api/media/${suffix}`;
+  } catch {
+    return rawUrl;
+  }
+};
 
 export async function POST(request) {
   const backendBase = getBackendBase();
   const backendUrl = `${backendBase}/api/remove-bg/`;
-  const requestOrigin = new URL(request.url).origin;
 
   try {
     const formData = await request.formData();
@@ -36,17 +58,10 @@ export async function POST(request) {
           headers: { "content-type": contentType },
         });
       }
-      const mediaBase = `${backendBase}/media/`;
-      if (data.url && typeof data.url === "string" && data.url.startsWith(mediaBase)) {
-        const path = data.url.slice(mediaBase.length);
-        data.url = `${requestOrigin}/api/media/${path}`;
-      }
+      data.url = toPublicMediaUrl(data.url);
       if (data.results && Array.isArray(data.results)) {
         data.results = data.results.map((r) => {
-          if (r.url && typeof r.url === "string" && r.url.startsWith(mediaBase)) {
-            const path = r.url.slice(mediaBase.length);
-            r.url = `${requestOrigin}/api/media/${path}`;
-          }
+          r.url = toPublicMediaUrl(r.url);
           return r;
         });
       }

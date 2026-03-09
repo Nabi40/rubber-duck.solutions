@@ -321,6 +321,21 @@ export default function Hero() {
     setTimeout(() => URL.revokeObjectURL(url), 2000);
   };
 
+  const toMediaProxyUrl = (rawUrl) => {
+    if (!rawUrl || typeof rawUrl !== "string") return rawUrl;
+    try {
+      const parsed = new URL(rawUrl, window.location.origin);
+      const marker = "/media/";
+      const idx = parsed.pathname.indexOf(marker);
+      if (idx === -1) return parsed.toString();
+      const mediaPath = parsed.pathname.slice(idx + marker.length);
+      if (!mediaPath) return parsed.toString();
+      return `/api/media/${mediaPath}${parsed.search || ""}`;
+    } catch {
+      return rawUrl;
+    }
+  };
+
   const downloadOutput = async () => {
     if (!origFile) return;
 
@@ -331,7 +346,6 @@ export default function Hero() {
 
       const apiBase =
         process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_API || "";
-      // Passport/stamp always go through our API proxy so the backend URL is never exposed
       let endpoint = apiBase
         ? `${apiBase.replace(/\/$/, "")}/api/passport-stamp/`
         : "/api/passport-stamp/";
@@ -379,17 +393,13 @@ export default function Hero() {
         const absoluteSheetUrl = /^https?:\/\//i.test(sheetUrl)
           ? sheetUrl
           : `${(apiBase || "").replace(/\/$/, "")}${sheetUrl.startsWith("/") ? "" : "/"}${sheetUrl}`;
+        const downloadUrl = toMediaProxyUrl(absoluteSheetUrl);
 
-        try {
-          const fileRes = await fetch(absoluteSheetUrl);
-          if (!fileRes.ok) throw new Error("File download failed");
-
-          const blob = await fileRes.blob();
-          const fileName = absoluteSheetUrl.split("/").pop() || "output.png";
-          triggerBlobDownload(blob, fileName);
-        } catch {
-          window.location.assign(absoluteSheetUrl);
-        }
+        const fileRes = await fetch(downloadUrl);
+        if (!fileRes.ok) throw new Error("File download failed");
+        const blob = await fileRes.blob();
+        const fileName = absoluteSheetUrl.split("/").pop() || "output.png";
+        triggerBlobDownload(blob, fileName);
         return;
       }
 
@@ -434,17 +444,13 @@ export default function Hero() {
           : `${(apiBase || "").replace(/\/$/, "")}${
               imageUrl.startsWith("/") ? "" : "/"
             }${imageUrl}`;
+        const downloadUrl = toMediaProxyUrl(absoluteImageUrl);
 
-        try {
-          const fileRes = await fetch(absoluteImageUrl);
-          if (!fileRes.ok) throw new Error("File download failed");
-
-          const blob = await fileRes.blob();
-          const fileName = absoluteImageUrl.split("/").pop() || "output.png";
-          triggerBlobDownload(blob, fileName);
-        } catch {
-          window.location.assign(absoluteImageUrl);
-        }
+        const fileRes = await fetch(downloadUrl);
+        if (!fileRes.ok) throw new Error("File download failed");
+        const blob = await fileRes.blob();
+        const fileName = absoluteImageUrl.split("/").pop() || "output.png";
+        triggerBlobDownload(blob, fileName);
         return;
       }
 

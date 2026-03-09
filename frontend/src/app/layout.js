@@ -56,31 +56,31 @@ export const metadata = {
     {
       rel: "apple-touch-icon",
       sizes: "120x120",
-      url: "/favicons/favicon.ico",
+      url: "/images/logo.png",
     },
     {
       rel: "icon",
       type: "image/png",
       sizes: "512x512",
-      url: "/favicons/favicon.ico",
+      url: "/images/logo.png",
     },
     {
       rel: "icon",
       type: "image/png",
       sizes: "192x192",
-      url: "/favicons/favicon.ico",
+      url: "/images/logo.png",
     },
     {
       rel: "icon",
       type: "image/png",
       sizes: "32x32",
-      url: "/favicons/favicon.ico",
+      url: "/images/logo.png",
     },
     {
       rel: "icon",
       type: "image/png",
       sizes: "16x16",
-      url: "/favicons/favicon.ico",
+      url: "/images/logo.png",
     },
   ],
 };
