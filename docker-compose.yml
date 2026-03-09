@@ -1,4 +1,17 @@
 services:
+  db:
+    image: postgres:16
+    container_name: db
+    environment:
+      POSTGRES_DB: rubber
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Dominos@25
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: always
+
   backend:
     build:
       context: .
@@ -9,8 +22,16 @@ services:
     environment:
       DJANGO_SECRET_KEY: "supersecret"
       DEBUG: "1"
+      DB_NAME: rubber
+      DB_USER: postgres
+      DB_PASSWORD: Dominos@25
+      DB_HOST: db
+      DB_PORT: 5432
     volumes:
       - ./backend:/app
+      - media_data:/app/media
+    depends_on:
+      - db
     restart: always
 
   frontend:
@@ -22,3 +43,6 @@ services:
       - backend
     restart: always
 
+volumes:
+  postgres_data:
+  media_data:
