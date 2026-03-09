@@ -53,6 +53,7 @@ class RemoveBGAPIView(APIView):
 
             # Build absolute URL from stored image
             absolute_url = request.build_absolute_uri(result.image.url)
+            absolute_url = absolute_url.replace("http://", "https://", 1)
 
             # Clean up duplicate file in remove_bg_results/
             if os.path.exists(output_path):
@@ -105,6 +106,7 @@ class PassportStampProcessAPIView(APIView):
                     result.image1.save(colored_filename, ContentFile(f.read()), save=True)
 
                 absolute_url = request.build_absolute_uri(result.image1.url)
+                absolute_url = absolute_url.replace("http://", "https://", 1)
 
                 return Response(
                     {
@@ -149,6 +151,7 @@ class PassportStampProcessAPIView(APIView):
                 stamp_result.image1.save(sheet_filename, ContentFile(f.read()), save=True)
 
             absolute_url = request.build_absolute_uri(stamp_result.image1.url)
+            absolute_url = absolute_url.replace("http://", "https://", 1)
 
             return Response(
                 {

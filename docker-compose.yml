@@ -22,6 +22,10 @@ services:
     environment:
       DJANGO_SECRET_KEY: "supersecret"
       DEBUG: "1"
+<<<<<<< HEAD
+=======
+      DJANGO_ALLOWED_HOSTS: "backend,backend.rubber-duck.solutions,www.rubber-duck.solutions,rubber-duck.solutions,localhost,127.0.0.1"
+>>>>>>> bdfc760 (fixes for docker)
       DB_NAME: rubber
       DB_USER: postgres
       DB_PASSWORD: Dominos@25
@@ -39,6 +43,10 @@ services:
     container_name: frontend
     ports:
       - "3000:3000"
+    environment:
+      BACKEND_URL: "https://backend.rubber-duck.solutions"
+      NEXT_PUBLIC_BASE_URL: "https://backend.rubber-duck.solutions"
+      NEXT_PUBLIC_API: "https://backend.rubber-duck.solutions"
     depends_on:
       - backend
     restart: always
