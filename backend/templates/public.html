@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Background Remover &amp; Passport Size Photo Maker | Rubber Duck Solutions</title>
+  <meta name="description" content="Remove image backgrounds instantly and create passport size or stamp size photos online. Drag and drop your picture, erase background, choose photo size, and generate clean passport photos in seconds.">
+  <meta name="keywords" content="background remover, ai background remover, remove background from image, passport size photo maker, passport photo editor, stamp size photo maker, id photo maker">
+  <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
+
+  <!-- Google Fonts: Poppins & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Cropper.js CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}?v={% now 'U' %}">
+</head>
+<body class="bg-[#efefef] text-[#222] antialiased">
+
+  <!-- Navbar Component -->
+  {% include "components/navbar.html" %}
+
+  <!-- Hero Component -->
+  {% include "components/hero.html" %}
+
+  <!-- Description / Features Component -->
+  {% include "components/description.html" %}
+
+  <!-- Footer Component -->
+  {% include "components/footer.html" %}
+
+  <!-- Application Logic -->
+  <script src="{% static 'js/app.js' %}?v={% now 'U' %}"></script>
+</body>
+</html>

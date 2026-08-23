@@ -1,0 +1,44 @@
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.checkerboard-pattern {
+  background-image: 
+    linear-gradient(45deg, rgba(0,0,0,0.12) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(0,0,0,0.12) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.12) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.12) 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+.checkerboard-small {
+  background-image: 
+    linear-gradient(45deg, rgba(0,0,0,0.14) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(0,0,0,0.14) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.14) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.14) 75%);
+  background-size: 8px 8px;
+  background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
+}
+
+.cropper-view-box,
+.cropper-face {
+  border-radius: 4px;
+}
+
+/* Custom Sleek Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #9da8ec;
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #7382ef;
+}

@@ -1,0 +1,352 @@
+[
+  {
+    "id": "fs_01",
+    "name": "Women's Black Formal Blazer",
+    "gender": "female",
+    "category": "suit",
+    "image": "/static/attires/fs_01.png"
+  },
+  {
+    "id": "fs_02",
+    "name": "Women's Navy Business Suit",
+    "gender": "female",
+    "category": "suit",
+    "image": "/static/attires/fs_02.png"
+  },
+  {
+    "id": "fs_03",
+    "name": "Charcoal Grey Slim Blazer",
+    "gender": "female",
+    "category": "suit",
+    "image": "/static/attires/fs_03.png"
+  },
+  {
+    "id": "fs_04",
+    "name": "Ivory White Executive Blazer",
+    "gender": "female",
+    "category": "suit",
+    "image": "/static/attires/fs_04.png"
+  },
+  {
+    "id": "fs_05",
+    "name": "Emerald Green Formal Jacket",
+    "gender": "female",
+    "category": "suit",
+    "image": "/static/attires/fs_05.png"
+  },
+  {
+    "id": "fs_06",
+    "name": "Deep Plum Professional Blazer",
+    "gender": "female",
+    "category": "suit",
+    "image": "/static/attires/fs_06.png"
+  },
+  {
+    "id": "fs_07",
+    "name": "Tailored Taupe Blazer",
+    "gender": "female",
+    "category": "suit",
+    "image": "/static/attires/fs_07.png"
+  },
+  {
+    "id": "fs_08",
+    "name": "Cobalt Blue Power Suit",
+    "gender": "female",
+    "category": "suit",
+    "image": "/static/attires/fs_08.png"
+  },
+  {
+    "id": "fs_09",
+    "name": "Burgundy Velvet Collar Blazer",
+    "gender": "female",
+    "category": "suit",
+    "image": "/static/attires/fs_09.png"
+  },
+  {
+    "id": "fs_10",
+    "name": "Slate Blue Collarless Jacket",
+    "gender": "female",
+    "category": "suit",
+    "image": "/static/attires/fs_10.png"
+  },
+  {
+    "id": "fs_11",
+    "name": "Rosewood Formal Blazer",
+    "gender": "female",
+    "category": "suit",
+    "image": "/static/attires/fs_11.png"
+  },
+  {
+    "id": "fs_12",
+    "name": "Classic Herringbone Dark Suit",
+    "gender": "female",
+    "category": "suit",
+    "image": "/static/attires/fs_12.png"
+  },
+  {
+    "id": "fh_01",
+    "name": "Classic White Pointed Collar Blouse",
+    "gender": "female",
+    "category": "shirt",
+    "image": "/static/attires/fh_01.png"
+  },
+  {
+    "id": "fh_02",
+    "name": "Baby Blue Silk Formal Blouse",
+    "gender": "female",
+    "category": "shirt",
+    "image": "/static/attires/fh_02.png"
+  },
+  {
+    "id": "fh_03",
+    "name": "Blush Pink Professional Shirt",
+    "gender": "female",
+    "category": "shirt",
+    "image": "/static/attires/fh_03.png"
+  },
+  {
+    "id": "fh_04",
+    "name": "Elegant Champagne Formal Top",
+    "gender": "female",
+    "category": "shirt",
+    "image": "/static/attires/fh_04.png"
+  },
+  {
+    "id": "fh_05",
+    "name": "Lilac Spread Collar Blouse",
+    "gender": "female",
+    "category": "shirt",
+    "image": "/static/attires/fh_05.png"
+  },
+  {
+    "id": "fh_06",
+    "name": "Sage Green Professional Blouse",
+    "gender": "female",
+    "category": "shirt",
+    "image": "/static/attires/fh_06.png"
+  },
+  {
+    "id": "fh_07",
+    "name": "Midnight Black Tailored Blouse",
+    "gender": "female",
+    "category": "shirt",
+    "image": "/static/attires/fh_07.png"
+  },
+  {
+    "id": "fh_08",
+    "name": "Cobalt Blue Button Blouse",
+    "gender": "female",
+    "category": "shirt",
+    "image": "/static/attires/fh_08.png"
+  },
+  {
+    "id": "fh_09",
+    "name": "Ivory Pleated Collar Top",
+    "gender": "female",
+    "category": "shirt",
+    "image": "/static/attires/fh_09.png"
+  },
+  {
+    "id": "fh_10",
+    "name": "Slate Grey V-Collar Shirt",
+    "gender": "female",
+    "category": "shirt",
+    "image": "/static/attires/fh_10.png"
+  },
+  {
+    "id": "fh_11",
+    "name": "Burgundy Classic Dress Shirt",
+    "gender": "female",
+    "category": "shirt",
+    "image": "/static/attires/fh_11.png"
+  },
+  {
+    "id": "fh_12",
+    "name": "Sky Blue Spread Collar Blouse",
+    "gender": "female",
+    "category": "shirt",
+    "image": "/static/attires/fh_12.png"
+  },
+  {
+    "id": "ms_01",
+    "name": "Classic Navy Blue Suit (Pinterest)",
+    "gender": "male",
+    "category": "suit",
+    "image": "/static/attires/ms_01.png"
+  },
+  {
+    "id": "ms_02",
+    "name": "Midnight Black Executive Suit",
+    "gender": "male",
+    "category": "suit",
+    "image": "/static/attires/ms_02.png"
+  },
+  {
+    "id": "ms_03",
+    "name": "Charcoal Grey Modern Suit",
+    "gender": "male",
+    "category": "suit",
+    "image": "/static/attires/ms_03.png"
+  },
+  {
+    "id": "ms_04",
+    "name": "Royal Blue Business Suit",
+    "gender": "male",
+    "category": "suit",
+    "image": "/static/attires/ms_04.png"
+  },
+  {
+    "id": "ms_05",
+    "name": "Dark Slate Corporate Suit",
+    "gender": "male",
+    "category": "suit",
+    "image": "/static/attires/ms_05.png"
+  },
+  {
+    "id": "ms_06",
+    "name": "Deep Burgundy Formal Suit",
+    "gender": "male",
+    "category": "suit",
+    "image": "/static/attires/ms_06.png"
+  },
+  {
+    "id": "ms_07",
+    "name": "Dark Olive Green Suit",
+    "gender": "male",
+    "category": "suit",
+    "image": "/static/attires/ms_07.png"
+  },
+  {
+    "id": "ms_08",
+    "name": "Classic Tuxedo & Black Tie",
+    "gender": "male",
+    "category": "suit",
+    "image": "/static/attires/ms_08.png"
+  },
+  {
+    "id": "ms_09",
+    "name": "Steel Blue Slim-Fit Suit",
+    "gender": "male",
+    "category": "suit",
+    "image": "/static/attires/ms_09.png"
+  },
+  {
+    "id": "ms_10",
+    "name": "Espresso Brown Classic Suit",
+    "gender": "male",
+    "category": "suit",
+    "image": "/static/attires/ms_10.png"
+  },
+  {
+    "id": "ms_11",
+    "name": "Graphite Grey Formal Suit",
+    "gender": "male",
+    "category": "suit",
+    "image": "/static/attires/ms_11.png"
+  },
+  {
+    "id": "ms_12",
+    "name": "Ocean Blue Tailored Suit",
+    "gender": "male",
+    "category": "suit",
+    "image": "/static/attires/ms_12.png"
+  },
+  {
+    "id": "ms_13",
+    "name": "Jet Black Peak Lapel Suit",
+    "gender": "male",
+    "category": "suit",
+    "image": "/static/attires/ms_13.png"
+  },
+  {
+    "id": "mh_01",
+    "name": "Crisp White Oxford Shirt",
+    "gender": "male",
+    "category": "shirt",
+    "image": "/static/attires/mh_01.png"
+  },
+  {
+    "id": "mh_02",
+    "name": "Sky Blue Formal Shirt",
+    "gender": "male",
+    "category": "shirt",
+    "image": "/static/attires/mh_02.png"
+  },
+  {
+    "id": "mh_03",
+    "name": "Classic French Blue Shirt",
+    "gender": "male",
+    "category": "shirt",
+    "image": "/static/attires/mh_03.png"
+  },
+  {
+    "id": "mh_04",
+    "name": "Pastel Pink Dress Shirt",
+    "gender": "male",
+    "category": "shirt",
+    "image": "/static/attires/mh_04.png"
+  },
+  {
+    "id": "mh_05",
+    "name": "Lavender Executive Shirt",
+    "gender": "male",
+    "category": "shirt",
+    "image": "/static/attires/mh_05.png"
+  },
+  {
+    "id": "mh_06",
+    "name": "Mint Green Formal Shirt",
+    "gender": "male",
+    "category": "shirt",
+    "image": "/static/attires/mh_06.png"
+  },
+  {
+    "id": "mh_07",
+    "name": "Light Grey Poplin Shirt",
+    "gender": "male",
+    "category": "shirt",
+    "image": "/static/attires/mh_07.png"
+  },
+  {
+    "id": "mh_08",
+    "name": "Charcoal Grey Dress Shirt",
+    "gender": "male",
+    "category": "shirt",
+    "image": "/static/attires/mh_08.png"
+  },
+  {
+    "id": "mh_09",
+    "name": "Midnight Navy Formal Shirt",
+    "gender": "male",
+    "category": "shirt",
+    "image": "/static/attires/mh_09.png"
+  },
+  {
+    "id": "mh_10",
+    "name": "Beige Cream Tailored Shirt",
+    "gender": "male",
+    "category": "shirt",
+    "image": "/static/attires/mh_10.png"
+  },
+  {
+    "id": "mh_11",
+    "name": "Fine Blue Micro-Stripe Shirt",
+    "gender": "male",
+    "category": "shirt",
+    "image": "/static/attires/mh_11.png"
+  },
+  {
+    "id": "mh_12",
+    "name": "Executive Black Dress Shirt",
+    "gender": "male",
+    "category": "shirt",
+    "image": "/static/attires/mh_12.png"
+  },
+  {
+    "id": "mh_13",
+    "name": "Classic White Dobby Textured Shirt",
+    "gender": "male",
+    "category": "shirt",
+    "image": "/static/attires/mh_13.png"
+  }
+]
